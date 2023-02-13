@@ -1,0 +1,10 @@
+<h3>la liste de produits </h3>
+
+<ul>
+  <li *ngFor="let produit of produits" style="border: 20px solid; list-style: none;">
+   <strong>ref:</strong>  {{produit.ref}} <br>
+    <strong>quantité :</strong> {{produit.quantite}} <br>
+    <strong>prix :</strong> {{produit.prixUnitaire}}
+
+  </li>
+</ul>
