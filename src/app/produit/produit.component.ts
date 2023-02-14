@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../shared/produit';
-import { ProduitMockService } from './produit.mock.service';
+import { ProduitService } from './produit.service';
+import { FormBuilder , FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-produit',
@@ -10,10 +11,32 @@ import { ProduitMockService } from './produit.mock.service';
 export class ProduitComponent implements OnInit {
 
   produits: Produit[] | undefined;
-  constructor(private produitService: ProduitMockService) { }
+  produitForm :FormGroup
+
+  constructor( private produitService: ProduitService,private fb: FormBuilder) {
+                this.produitForm = this.fb.group({
+                  ref:['' , Validators.required],
+                  quantite:['' , Validators.required],
+                  prixUnitaire:['' , Validators.required]
+                })
+
+                }
 
   ngOnInit(): void {
-    this.produits = this.produitService.getProduits();
+    this.loadProduits();
   }
+    loadProduits(){
+      this.produitService.getProduits().subscribe(
+        data => {this.produits = data},
+        error => {console.log('an error was occured')},
+        () => {console.log('loading products was donne')}
 
+      );
+    }
+    addProduit(){
+      const p = this.produitForm.value;
+        this.produitService.addProduit(p).subscribe(
+          res => {this.loadProduits}
+        );
+    }
 }
