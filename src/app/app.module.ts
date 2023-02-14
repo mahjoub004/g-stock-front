@@ -7,6 +7,7 @@ import { ProduitComponent } from './produit/produit.component';
 import { ProduitMockService } from './produit/produit.mock.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { ContentComponent } from './content/content.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     ProduitComponent,
     NavBarComponent,
     SideBarComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
