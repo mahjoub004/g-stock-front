@@ -9,22 +9,33 @@
             <th>Quantité </th>
             <th>Prix unitaire </th>
             <th></th>
-            <th><button type="button" class="btn btn-warning"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></th>
+            <th><button type="button" class="btn btn-success"
+              (click)="operation='add';"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></th>
         </thead>
         <tbody>
           <tr *ngFor="let produit of produits">
             <td>{{produit.ref}}</td>
             <td>{{produit.quantite}}</td>
             <td>{{produit.prixUnitaire}}</td>
-            <td><button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>
+            <td><button type="button" class="btn btn-warning"
+              (click)="operation='edit';"><i class="fa fa-pencil" aria-hidden="true"></i>
             </button></td>
-            <td><button type="button" class="btn btn-warning"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-danger"
+              (click)="operation='delete';"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
           </tr>
         </tbody>
       </table>
 
     </div>
     <div class="col-lg-7 mt-3">
+
+
+        <button type='button' class='btn btn-dark'>
+        {{operation == 'add' ? 'Ajouter un produit' : ''}}
+        {{operation == 'edit' ? 'Modifier un produit' : ''}}
+        {{operation == 'delete' ? 'Supprimer un produit' : ''}}
+        </button>
+
       <form class="row g-3 needs-validation shadow-lg p-3 mb-5 bg-body rounded"
         [formGroup]="produitForm">
         <div class="col-md-4">

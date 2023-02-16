@@ -12,6 +12,7 @@ export class ProduitComponent implements OnInit {
 
   produits: Produit[] | undefined;
   produitForm :FormGroup
+  operation: String = 'add'
 
   constructor( private produitService: ProduitService,private fb: FormBuilder) {
                 this.produitForm = this.fb.group({
